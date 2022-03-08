@@ -1,5 +1,20 @@
-x= [int(i) for i in input("numbers-").split(",")]
-square_number = list(map(lambda i:i**2,x))
-cube_number = list(map(lambda i:i**3,x))
-print(square_number)
-print(cube_number)
+import sqlite3
+
+connection = sqlite3.connect("college.db")
+connection.execute('''CREATE TABLE STUDENT(
+                       ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                       NAME TEXT,
+                       ROLLNUMBER INTEGER,
+                       ADMNO INTEGER,
+                       COLLEGE TEXT
+
+    );       ''')
+print("Table created succesfully")
+getName = input("Enter name: ")
+getRollNumber = input("Enter Roll Number: ")
+getADmno = input("ENTER ADMNO : ")
+getCollege = input("Enter college name: ")
+connection.execute("INSERT INTO STUDENT(NAME , ROLLNUMBER,ADMNO , COLLEGE) VALUES('"+getName+"',"+getRollNumber+","+getADmno+",'"+getCollege+"')")
+connection.commit()
+connection.close()
+print("INSERTED")
