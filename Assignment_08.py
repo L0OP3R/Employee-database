@@ -1,0 +1,7 @@
+file = open("Noob.txt",'a')
+file.write("\n")
+User_input = input("String-")
+data = User_input+", Length="+str(len(User_input))
+file.write(data)
+print("Data was written succesfully ")
+file.close()
